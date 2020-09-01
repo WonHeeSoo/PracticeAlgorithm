@@ -6,6 +6,9 @@ namespace PracticeAlgorithm
     {
         static void Main(string[] args)
         {
+            Board board = new Board();
+            board.Initalize();
+
             Console.CursorVisible = false; // 커서 보이지 않게 하기
 
             const int WAIT_TICK = 1000 / 30;
