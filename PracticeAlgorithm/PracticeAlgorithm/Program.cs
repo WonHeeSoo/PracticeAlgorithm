@@ -7,7 +7,9 @@ namespace PracticeAlgorithm
         static void Main(string[] args)
         {
             Board board = new Board();
-            board.Initialize(25);
+            Player player = new Player();
+            board.Initialize(25, player);
+            player.Initialize(1, 1, 23, board.Size, board);
 
             Console.CursorVisible = false; // 커서 보이지 않게 하기
 
@@ -23,12 +25,15 @@ namespace PracticeAlgorithm
                 if (currentTick - lastTick < WAIT_TICK)
                     continue;
 
+                int deltaTick = currentTick - lastTick;
+
                 lastTick = currentTick;
                 #endregion
 
                 // 입력
 
                 // 로직
+                player.Update(deltaTick);
 
                 // 렌더링
                 Console.SetCursorPosition(0, 0); // 커서 위치
