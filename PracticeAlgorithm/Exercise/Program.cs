@@ -63,6 +63,37 @@ namespace Exercise
                 if (visited[now] == false)
                     DFS(now);
         }
+
+        public void BFS(int start)
+        {
+            bool[] found = new bool[6];
+            int[] parent = new int[6];
+            int[] distance = new int[6];
+
+            Queue<int> q = new Queue<int>();
+            q.Enqueue(start);
+            found[start] = true;
+            parent[start] = start;
+            distance[start] = 0;
+
+            while(q.Count > 0)
+            {
+                int now = q.Dequeue();
+                Console.WriteLine(now);
+
+                for (int next = 0; next < 6; next++)
+                {
+                    if (adj[now, next] == 0) // 인접하지 않앗으면 스킵
+                        continue;
+                    if (found[next]) // 이미 발견한 애라면 스킵
+                        continue;
+                    q.Enqueue(next);
+                    found[next] = true;
+                    parent[next] = now;
+                    distance[next] = distance[now] + 1;
+                }
+            }
+        }
     }
     class Program
     {
@@ -71,7 +102,7 @@ namespace Exercise
             // DFS (Depth First Search 깊이 우선 탐색)
             // BFS (Breadth First Search 너비 우선 탐색)
             Graph graph = new Graph();
-            graph.DFS(1);
+            graph.BFS(0);
         }
     }
 }
