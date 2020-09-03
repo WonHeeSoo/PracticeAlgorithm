@@ -9,7 +9,7 @@ namespace PracticeAlgorithm
             Board board = new Board();
             Player player = new Player();
             board.Initialize(25, player);
-            player.Initialize(1, 1, 23, board.Size, board);
+            player.Initialize(1, 1, board);
 
             Console.CursorVisible = false; // 커서 보이지 않게 하기
 
